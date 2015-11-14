@@ -6,10 +6,8 @@ RUN echo "Server = http://mirror.de.leaseweb.net/archlinux/\$repo/os/\$arch" >> 
 RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = http://lambda.informatik.uni-tuebingen.de/repo/mypkgs" >> /etc/pacman.conf
+RUN pacman -Sy --noconfirm archlinux-keyring
 RUN pacman -Syu  --noconfirm
-RUN pacman-db-upgrade
-RUN yes | pacman -S lzo --force
-RUN pacman -S --noconfirm archlinux-keyring
 RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
 
 ##Installing Required Packages
@@ -17,13 +15,13 @@ RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync
 #Install all the dependencies of my pipeline
 
 RUN pacman -S --noconfirm jdk7
-RUN pacman -S --noconfirm bam2tdf 
-RUN pacman -S --noconfirm betterrmdup 
-RUN pacman -S --noconfirm circularmapper clipandmerge 
-RUN pacman -S --noconfirm fastqc 
-RUN pacman -S --noconfirm preseq 
+RUN pacman -S --noconfirm bam2tdf
+RUN pacman -S --noconfirm betterrmdup
+RUN pacman -S --noconfirm circularmapper clipandmerge
+RUN pacman -S --noconfirm fastqc
+RUN pacman -S --noconfirm preseq
 RUN pacman -S --noconfirm snpcc
-RUN pacman -S --noconfirm vcf2draft 
+RUN pacman -S --noconfirm vcf2draft
 RUN pacman -S --noconfirm fastx_toolkit
 RUN pacman -S --noconfirm htslib
 RUN pacman -S --noconfirm qualimap
@@ -38,7 +36,7 @@ RUN pacman -S --noconfirm eager
 
 # X11 login
 RUN pacman -Sy --noconfirm openssh
-RUN pacman -Sy --noconfirm xorg-xauth 
+RUN pacman -Sy --noconfirm xorg-xauth
 RUN pacman -Sy --noconfirm xorg-xhost
 RUN pacman -Sy --noconfirm xorg-xeyes
 RUN ssh-keygen -A
