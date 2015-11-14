@@ -7,6 +7,7 @@ RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = http://lambda.informatik.uni-tuebingen.de/repo/mypkgs" >> /etc/pacman.conf
 RUN pacman -Sy --noconfirm archlinux-keyring
+RUN pacman-db-upgrade
 RUN pacman -Syu  --noconfirm
 RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
 
