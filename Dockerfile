@@ -6,6 +6,7 @@ RUN echo "Server = http://mirror.de.leaseweb.net/archlinux/\$repo/os/\$arch" >> 
 RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = http://lambda.informatik.uni-tuebingen.de/repo/mypkgs" >> /etc/pacman.conf
+RUN pacman-key --refresh-keys
 RUN pacman -Syu  --noconfirm
 RUN pacman-db-upgrade
 RUN yes | pacman -S lzo --force
@@ -62,8 +63,9 @@ RUN pacman -S --noconfirm gatk
 
 
 ## ssh key
-RUN sudo -u eager mkdir /home/eager/.ssh
-RUN sudo -u eager touch /home/eager/.ssh/authorized_keys
+RUN mkdir -p /home/eager/.ssh
+RUN touch /home/eager/.ssh/authorized_keys
+RUN chown -R eager: /home/eager/
 RUN chmod 600 /home/eager/.ssh/authorized_keys
 ADD ssh_eager_rsa.key.pub /tmp/
 RUN cat /tmp/ssh_eager_rsa.key.pub >> /home/eager/.ssh/authorized_keys;rm -f /tmp/ssh_eager_rsa.key.pub
