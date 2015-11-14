@@ -9,6 +9,7 @@ RUN echo "Server = http://lambda.informatik.uni-tuebingen.de/repo/mypkgs" >> /et
 RUN pacman -Syu  --noconfirm
 RUN pacman-db-upgrade
 RUN yes | pacman -S lzo --force
+RUN pacman -S --noconfirm archlinux-keyring
 RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
 
 ##Installing Required Packages
