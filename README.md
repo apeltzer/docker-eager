@@ -4,9 +4,19 @@ To abstract from the madness of getting the environment set up, the users is sup
 
 ## deager CLI
 
-The EAGER Pipeline comes with a tiny docker binary which helps with the pipeline...
+The EAGER Pipeline comes with a tiny docker binary which helps with the pipeline setup and usage. 
+To run the pipeline, you will need to install two things, a running Go environment and Docker.
+
+To install Go, please refer to https://golang.org/dl/ and use the appropriate download and follow your respecitve installation instructions. Afterwards, you should install Docker following the respective instructions here:
+http://docs.docker.com/engine/installation/
+
+Afterwards, you could start with the following initial commands to get your environment setup. Note that these might be slightly different on different Unix operating systems, but have been tested on OSX, ArchLinux and Ubuntu 14.04 to work as expected. 
+
 
 ```
+$ docker pull apeltzer/eager
+$ go get -d github.com/apeltzer/deager
+$ go build github.com/apeltzer/deager
 $ go install github.com/apeltzer/deager
 $ deager -h
 Eager Docker Client
