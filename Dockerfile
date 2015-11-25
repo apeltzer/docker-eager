@@ -18,7 +18,7 @@ RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync
 
 RUN pacman -S --noconfirm jdk7
 RUN pacman -S --noconfirm bam2tdf
-RUN pacman -S --noconfirm betterrmdup
+RUN pacman -S --noconfirm dedup
 RUN pacman -S --noconfirm circularmapper clipandmerge
 RUN pacman -S --noconfirm fastqc
 RUN pacman -S --noconfirm preseq
