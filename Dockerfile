@@ -34,6 +34,9 @@ RUN pacman -S --noconfirm bowtie2
 RUN pacman -S --noconfirm picard-tools
 RUN pacman -S --noconfirm stampy
 RUN pacman -S --noconfirm eager
+RUN pacman -S --noconfirm angsd
+RUN pacman -S --noconfirm schmutzi
+
 
 
 # X11 login
