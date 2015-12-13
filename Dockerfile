@@ -22,7 +22,6 @@ RUN pacman -S --noconfirm dedup
 RUN pacman -S --noconfirm circularmapper clipandmerge
 RUN pacman -S --noconfirm fastqc
 RUN pacman -S --noconfirm preseq
-RUN pacman -S --noconfirm snpcc
 RUN pacman -S --noconfirm vcf2draft
 RUN pacman -S --noconfirm fastx_toolkit
 RUN pacman -S --noconfirm htslib
