@@ -34,7 +34,7 @@ RUN pacman -S --noconfirm picard-tools
 RUN pacman -S --noconfirm stampy
 RUN pacman -S --noconfirm eager
 RUN pacman -S --noconfirm angsd
-RUN pacman -S --noconfirm schmutzi
+RUN pacman -S --noconfirm schmutzi --force
 
 
 
