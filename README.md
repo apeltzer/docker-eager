@@ -32,8 +32,6 @@ gui:      Connect to container and start eager GUI
 run:      Run eagercli within --data directory
 
 Options:
-  --gatk <path>	     Path to the gtak file (jar/tar.bz2) [default: ~/gatk/]
-                     It has to be provided by the user, since the license prohibits packaging.
   --data <path>      Directory to use as /data/ directory within eager (default: ~/data)
   --image <str>      Name of the eager image [default: apeltzer/eager]
   --container <str>  Name of the container spun up (default: eager_$USER)
@@ -44,7 +42,7 @@ Options:
 ```
 ### Usage
 
-The tool expects a `data` directory holding the input data / an output directory and a directory holding **one** tar file of the gatk.
+The tool expects a `data` directory holding the input data / an output directory.
 
 ```
 $ ls -l ~/data/
@@ -54,17 +52,13 @@ total 4856144
 drwxr-x---@ 17 kniepbert  staff         578 Feb 23  2015 Lepra_Ref
 drwxr-xr-x  18 kniepbert  staff         612 Nov 14 13:10 output
 -rw-r--r--   1 kniepbert  staff           0 Nov 14 14:06 test
-$ ls -l ~/gatk/
-total 47080
--rw-r--r--@ 1 kniepbert  staff  11476623 Apr 23  2015 GenomeAnalysisTK-3.3-0.tar.bz2
--rw-r--r--  1 kniepbert  staff  12626730 Oct 24  2014 GenomeAnalysisTK.jar
-drwxr-xr-x  7 kniepbert  staff       238 Nov 14 12:58 resources
+
 ```
 
 To fetch the image and start the docker container just fire up the following command.
 
 ```
-$ deager --gatk ~/gatk --data ~/data/ start
+$ deager --data ~/data/ start
 $ docker ps
 NAMES               IMAGE               COMMAND                  PORTS
 eager_kniepbert     apeltzer/eager      "supervisord -c /etc/"   0.0.0.0:2222->22/tcp
@@ -75,7 +69,7 @@ eager_kniepbert     apeltzer/eager      "supervisord -c /etc/"   0.0.0.0:2222->2
 Once the container is started, a GUI could be started via ssh.
 
 ```
-$ deager --gatk ~/gatk/ --data ~/data/ gui
+$ deager --data ~/data/ gui
 ```
 
 ![](pics/deager_gui.png)
@@ -96,7 +90,6 @@ docker build --rm -t eager .
 
 ```
 $ docker run -d --privileged --name eager -h eager \
-             -v $(pwd)/gatk/:/opt/gatk/ \
              -v /dev/null:/dev/null -v /dev/urandom:/dev/urandom \
              -v /dev/random:/dev/random -v /dev/zero:/dev/zero \
              -p 2232:22 eager:latest
