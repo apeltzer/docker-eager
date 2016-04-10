@@ -35,7 +35,7 @@ RUN pacman -S --noconfirm stampy
 RUN pacman -S --noconfirm angsd
 RUN pacman -S --noconfirm schmutzi --force
 RUN pacman -S --noconfirm eager --force
-
+RUN pacman -S --noconfirm gatk --force
 
 
 
@@ -53,11 +53,6 @@ RUN echo "eager ALL=(ALL) ALL" >> /etc/sudoers
 RUN pacman -S supervisor --noconfirm
 RUN sed -i -e 's/nodaemon=.*/nodaemon=true/' /etc/supervisord.conf
 ADD etc/supervisor.d/sshd.ini /etc/supervisor.d/sshd.ini
-
-## Extract script for GATK (only until licencing issues are fixed)
-#RUN pacman -S --noconfirm gatk
-ADD gatk/extract_gatk.sh /usr/local/bin/extract_gatk.sh
-ADD etc/supervisor.d/gatk.ini /etc/supervisor.d/
 
 ## ssh key
 RUN mkdir -p /home/eager/.ssh
