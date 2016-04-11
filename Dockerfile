@@ -38,8 +38,7 @@ RUN pacman -S --noconfirm eager --force
 RUN pacman -S --noconfirm gatk --force
 
 # Add GATK Licence to image to be consistent with Licencing Permission by Broad Institute
-ADD GATKLicense.txt /usr/share/licenses/common/GATKLicense.txt
-
+ADD GATKLicence.txt /usr/share/licenses/common/GATKLicence.txt
 
 
 # X11 login
