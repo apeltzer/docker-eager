@@ -51,7 +51,7 @@ RUN sed -i -e 's/#X11Forwarding.*/X11Forwarding yes/' /etc/ssh/sshd_config
 RUN sed -i -e 's/#UseLogin.*/UseLogin no/' /etc/ssh/sshd_config
 RUN sed -i -e 's/#AllowTcpForwarding.*/AllowTcpForwarding yes/' /etc/ssh/sshd_config
 RUN sed -i -e 's/#X11UseLocalHost.*/X11UseLocalHost yes/' /etc/ssh/sshd_config
-RUN sed -i -e 's/#X11DisplayOffset.*/X11DisplayOffset yes/' /etc/ssh/sshd_config
+RUN sed -i -e 's/#X11DisplayOffset.*/X11DisplayOffset 10/' /etc/ssh/sshd_config
 RUN echo "eager ALL=(ALL) ALL" >> /etc/sudoers
 
 ## Install supervisord
