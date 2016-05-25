@@ -5,18 +5,26 @@ FROM base/archlinux
 RUN echo "Server = http://mirror.de.leaseweb.net/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
 RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
-RUN echo "Server = http://lambda.informatik.uni-tuebingen.de/repo/mypkgs" >> /etc/pacman.conf
+RUN echo "Server = https://lambda.informatik.uni-tuebingen.de/repo/mypkgs/" >> /etc/pacman.conf
+RUN pacman -Sy pacman-mirrorlist --noconfirm
+RUN mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+RUN sed -i 's/^#//g' /etc/pacman.d/mirrorlist
+RUN pacman -Sy archlinux-keyring --noconfirm
 RUN pacman-key --refresh-keys
-#RUN pacman -Syu  --noconfirm
 RUN pacman-db-upgrade
 RUN pacman -Syu  --noconfirm
+RUN pacman-db-upgrade
 RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
+RUN pacman -S ca-certificates ca-certificates-utils --noconfirm
+RUN trust extract-compat 
 
+#Install all the dependencies of my pipelin
 ##Installing Required Packages
 ##Oracle JDK7, BT2, BWA, Samtools, etc.
 #Install all the dependencies of my pipeline
 
 RUN pacman -S --noconfirm jdk7
+RUN pacman -S --noconfirm jdk
 RUN pacman -S --noconfirm bam2tdf
 RUN pacman -S --noconfirm dedup
 RUN pacman -S --noconfirm circularmapper clipandmerge
