@@ -34,7 +34,7 @@ RUN pacman -S --noconfirm vcf2genome
 RUN pacman -S --noconfirm fastx_toolkit
 RUN pacman -S --noconfirm htslib
 RUN pacman -S --noconfirm qualimap
-RUN pacman -S --noconfirm mapdamage
+RUN pacman -S --noconfirm mapdamage --force
 RUN pacman -S --noconfirm bwa
 RUN pacman -S --noconfirm eager-reportengine eagerstat
 RUN pacman -S --noconfirm bowtie2 
