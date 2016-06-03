@@ -23,7 +23,6 @@ RUN trust extract-compat
 ##Oracle JDK7, BT2, BWA, Samtools, etc.
 #Install all the dependencies of my pipeline
 
-RUN pacman -S --noconfirm jdk7
 RUN pacman -S --noconfirm jdk
 RUN pacman -S --noconfirm bam2tdf
 RUN pacman -S --noconfirm dedup
