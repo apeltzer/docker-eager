@@ -1,5 +1,6 @@
 # EAGERpipeline Docker Image
 [![](https://imagelayers.io/badge/apeltzer/eager:latest.svg)](https://imagelayers.io/?images=apeltzer/eager:latest 'Get your own badge on imagelayers.io')
+
 To abstract from the madness of getting the environment set up, the users is supposed to use EAGER via an docker image.
 
 ## deager CLI
