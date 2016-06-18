@@ -23,26 +23,8 @@ RUN trust extract-compat
 ##Oracle JDK7, BT2, BWA, Samtools, etc.
 #Install all the dependencies of my pipeline
 
-RUN pacman -S --noconfirm jdk
-RUN pacman -S --noconfirm bam2tdf
-RUN pacman -S --noconfirm dedup
-RUN pacman -S --noconfirm circularmapper clipandmerge
-RUN pacman -S --noconfirm fastqc
-RUN pacman -S --noconfirm preseq --force
-RUN pacman -S --noconfirm vcf2genome
-RUN pacman -S --noconfirm fastx_toolkit
-RUN pacman -S --noconfirm htslib
-RUN pacman -S --noconfirm qualimap --force
-RUN pacman -S --noconfirm mapdamage --force
-RUN pacman -S --noconfirm bwa
-RUN pacman -S --noconfirm eager-reportengine eagerstat --force
-RUN pacman -S --noconfirm bowtie2 
-RUN pacman -S --noconfirm picard-tools 
-RUN pacman -S --noconfirm stampy 
-RUN pacman -S --noconfirm angsd
-RUN pacman -S --noconfirm schmutzi --force
-RUN pacman -S --noconfirm eager --force
-RUN pacman -S --noconfirm gatk --force
+RUN pacman -S --noconfirm jdk bam2tdf dedup circularmapper clipandmerge fastqc preseq vcf2genome fastx_toolkit htslib qualimap mapdamage bwa eager-reportengine eagerstat bowtie2 picard-tools stampy angsd schmutzi eager gatk --force
+
 
 # Add GATK Licence to image to be consistent with Licencing Permission by Broad Institute
 ADD GATKLicence.txt /usr/share/licenses/common/GATKLicence.txt
