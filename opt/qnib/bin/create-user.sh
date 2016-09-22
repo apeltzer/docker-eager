@@ -6,7 +6,7 @@ fi
 if [ "X${DCKR_GID}" == "X" ];then
     DCKR_GID="50"
 fi
-groupadd -g "${DCKR_GID}" eagerGroup
+groupadd -g "${DCKR_GID}" eagergroup
 useradd -d /home/eager/ -M -g "${DCKR_GID}" -u "${DCKR_UID}" eager
 echo "eager:eager" | chpasswd
 sleep 1
