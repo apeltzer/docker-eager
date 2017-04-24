@@ -7,12 +7,11 @@ RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = https://lambda.informatik.uni-tuebingen.de/repo/mypkgs/" >> /etc/pacman.conf
 RUN pacman -Sy pacman-mirrorlist --noconfirm
-RUN mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 RUN sed -i 's/^#//g' /etc/pacman.d/mirrorlist
 RUN pacman -Sy archlinux-keyring --noconfirm
 RUN pacman-key --refresh-keys
 RUN pacman-db-upgrade
-RUN pacman -Syu  --noconfirm
+RUN pacman -Syu --noconfirm --force
 RUN pacman-db-upgrade
 RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
 RUN pacman -S ca-certificates ca-certificates-utils --noconfirm
