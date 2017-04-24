@@ -6,6 +6,7 @@ RUN echo "Server = http://mirror.de.leaseweb.net/archlinux/\$repo/os/\$arch" >> 
 RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = https://lambda.informatik.uni-tuebingen.de/repo/mypkgs/" >> /etc/pacman.conf
+RUN pacman -Syu --noconfirm
 RUN pacman -Sy --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
 
 #Install all the dependencies of my pipelin
