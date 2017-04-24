@@ -20,7 +20,7 @@ RUN rm /var/cache/pacman/pkg/*
 ADD GATKLicence.txt /usr/share/licenses/common/GATKLicence.txt
 
 # X11 login
-RUN pacman -Sy --noconfirm openssh
+RUN pacman -Sy --noconfirm openssh openssl
 RUN pacman -Sy --noconfirm xorg-xauth
 RUN pacman -Sy --noconfirm xorg-xhost
 RUN pacman -Sy --noconfirm xorg-xeyes
