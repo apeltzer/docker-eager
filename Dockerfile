@@ -7,24 +7,26 @@ RUN echo "[lambdait]" >> /etc/pacman.conf
 RUN echo "SigLevel = Never" >> /etc/pacman.conf
 RUN echo "Server = https://lambda.informatik.uni-tuebingen.de/repo/mypkgs/" >> /etc/pacman.conf
 RUN pacman -Syu --noconfirm
-RUN pacman -Sy --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl; rm /var/cache/pacman/pkg/*
+RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync strace r python2 gsl
 
 #Install all the dependencies of my pipelin
 ##Installing Required Packages
 ##Oracle JDK7, BT2, BWA, Samtools, etc.
 #Install all the dependencies of my pipeline
 
-RUN pacman -Sy --noconfirm jdk bam2tdf dedup circularmapper clipandmerge fastqc preseq vcf2genome fastx_toolkit htslib qualimap mapdamage bwa eager-reportengine eagerstat bowtie2 picard-tools stampy angsd schmutzi eager-gui eager-cli gatk --force
+RUN pacman -S --noconfirm --force jdk bam2tdf dedup circularmapper clipandmerge fastqc preseq vcf2genome fastx_toolkit htslib qualimap mapdamage bwa eager-reportengine eagerstat 
+RUN pacman -S --noconfirm --force bowtie2 picard-tools stampy angsd 
+RUN pacman -S --noconfirm --force schmutzi eager-gui eager-cli gatk
 RUN rm /var/cache/pacman/pkg/*
 
 # Add GATK Licence to image to be consistent with Licencing Permission by Broad Institute
 ADD GATKLicence.txt /usr/share/licenses/common/GATKLicence.txt
 
 # X11 login
-RUN pacman -Sy --noconfirm openssh openssl
-RUN pacman -Sy --noconfirm xorg-xauth
-RUN pacman -Sy --noconfirm xorg-xhost
-RUN pacman -Sy --noconfirm xorg-xeyes
+RUN pacman -S --noconfirm openssh openssl
+RUN pacman -S --noconfirm xorg-xauth
+RUN pacman -S --noconfirm xorg-xhost
+RUN pacman -S --noconfirm xorg-xeyes
 RUN ssh-keygen -A
 RUN sed -i -e 's/#X11Forwarding.*/X11Forwarding yes/' /etc/ssh/sshd_config
 RUN sed -i -e 's/#UseLogin.*/UseLogin no/' /etc/ssh/sshd_config
@@ -35,6 +37,7 @@ RUN echo "eager ALL=(ALL) ALL" >> /etc/sudoers
 
 ## Install supervisord
 RUN pacman -S supervisor --noconfirm
+RUN rm /var/cache/pacman/pkg/*
 RUN sed -i -e 's/nodaemon=.*/nodaemon=true/' /etc/supervisord.conf
 ADD etc/supervisor.d/sshd.ini /etc/supervisor.d/sshd.ini
 
