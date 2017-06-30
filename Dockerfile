@@ -17,6 +17,7 @@ RUN pacman -S --noconfirm freetype2 ttf-dejavu sudo git libcups mesa-libgl rsync
 RUN pacman -S --noconfirm --force jdk bam2tdf dedup circularmapper clipandmerge fastqc preseq vcf2genome fastx_toolkit htslib qualimap mapdamage bwa eager-reportengine eagerstat 
 RUN pacman -S --noconfirm --force bowtie2 picard-tools stampy angsd 
 RUN pacman -S --noconfirm --force schmutzi eager-gui eager-cli gatk
+RUN mkdir -p /data
 RUN rm /var/cache/pacman/pkg/*
 
 # Add GATK Licence to image to be consistent with Licencing Permission by Broad Institute
